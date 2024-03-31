@@ -8,6 +8,8 @@ import io
 class Explorer:
     def __init__(self, data_path):
         self.data = pd.read_csv(data_path)
+        # self.data = pd.read_html('https://en.wikipedia.org/wiki/Economy_of_the_United_States', match='Inflation rate')[0]
+
         self.cat_cols, self.num_cols = self.check_variables()
         buffer = io.StringIO()
         self.data.info(buf=buffer)
@@ -59,3 +61,19 @@ class Explorer:
         sns.heatmap(self.data[self.num_cols].corr(), annot=True, cmap='coolwarm', fmt=".2f", linewidths=.5)
         plt.title('Correlation Heatmap')
         return fig
+    
+    def missing_value(self):
+        # 检查缺失值
+        missing_data = self.data.isnull().sum()
+        data_types = self.data.dtypes
+
+        # 创建一个 DataFrame 来存储结果
+        missing_info = pd.DataFrame({
+            'Missing Values': missing_data,
+            'Data Type': data_types
+        })
+
+        # 过滤出有缺失值的列
+        missing_info = missing_info[missing_info['Missing Values'] > 0]
+
+        return missing_info
