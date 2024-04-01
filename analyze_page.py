@@ -87,8 +87,9 @@ else:
 
 
     if st.session_state.start_process:
-
+        # TODO: 先处理缺失值还是先处理数据类型，还是先展示数据？
         # Check and cast data types
+        exp.cast_type(edited_type_df)
 
         # Check data quality
         st.header('Data Quality Check')
