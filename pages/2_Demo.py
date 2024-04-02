@@ -4,7 +4,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import io
-from explorer import Explorer
+from src.explorer import Explorer
 
 # Initialize status
 if 'upload_file' not in st.session_state:
@@ -17,7 +17,8 @@ if 'start_process' not in st.session_state:
 
 # Uploade File
 st.header('Upload Data File')
-uploader = st.file_uploader('please choose a file', type=['csv'])
+# uploader = st.file_uploader('please choose a file', type=['csv'])
+uploader = 'files/demo/insurance.csv'
 if not uploader:
     st.write('**Step 1: Upload a file**')
     st.write('**Step 2: Confirm Data Information**')
