@@ -15,11 +15,8 @@ if 'start_process' not in st.session_state:
     st.session_state.start_process = False
 
 def init_session_state():
-# if 'upload_file' not in st.session_state:
     st.session_state['upload_file'] = False
-# if 'confirm_type' not in st.session_state:
     st.session_state.confirm_type = False
-# if 'start_process' not in st.session_state:
     st.session_state.start_process = False
 
 # print('st.session_state.upload_file: ', st.session_state.upload_file)
