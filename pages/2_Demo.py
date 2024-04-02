@@ -122,4 +122,4 @@ else:
         st.subheader('Heatmap')
         fig = exp.corr_heatmap()
         st.pyplot(fig)
-        st.subheader('散点图趋势曲线')
+        st.header('To be continued..')

@@ -8,16 +8,28 @@ from src.explorer import Explorer
 
 # Initialize status
 if 'upload_file' not in st.session_state:
-    st.session_state.upload_file = False
+    st.session_state['upload_file'] = False
 if 'confirm_type' not in st.session_state:
     st.session_state.confirm_type = False
 if 'start_process' not in st.session_state:
     st.session_state.start_process = False
 
+def init_session_state():
+# if 'upload_file' not in st.session_state:
+    st.session_state['upload_file'] = False
+# if 'confirm_type' not in st.session_state:
+    st.session_state.confirm_type = False
+# if 'start_process' not in st.session_state:
+    st.session_state.start_process = False
+
+# print('st.session_state.upload_file: ', st.session_state.upload_file)
+# print('st.session_state.confirm_type: ', st.session_state.confirm_type)
+# print('st.session_state.start_process: ', st.session_state.start_process)
+
 
 # Uploade File
 st.header('Upload Data File')
-uploader = st.file_uploader('please choose a file', type=['csv'])
+uploader = st.file_uploader('please choose a file', type=['csv'], on_change=init_session_state)
 if not uploader:
     st.write('**Step 1: Upload a file**')
     st.write('**Step 2: Confirm Data Information**')
@@ -121,4 +133,4 @@ else:
         st.subheader('Heatmap')
         fig = exp.corr_heatmap()
         st.pyplot(fig)
-        st.subheader('散点图趋势曲线')
+        st.header('To be continued..')
