@@ -1,0 +1,2 @@
+# 后台运行 终端关闭也不影响 并把 终端输出 输入到log_s.log
+nohup streamlit run project/a.py --server.port 8000 > log_s.log &
