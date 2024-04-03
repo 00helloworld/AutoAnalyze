@@ -1,2 +1,12 @@
 # 后台运行 终端关闭也不影响 并把 终端输出 输入到log_s.log
-nohup streamlit run project/a.py --server.port 8501 > log_s.log &
+nohup streamlit run Home.py --server.port 8501 > log_s.log &
+
+location /projects/auto_eda {
+        proxy_pass http://0.0.0.0:8501/;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
