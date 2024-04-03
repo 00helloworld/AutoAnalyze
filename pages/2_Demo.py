@@ -6,6 +6,15 @@ import matplotlib.pyplot as plt
 import io
 from src.explorer import Explorer
 
+
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 # Initialize status
 if 'upload_file' not in st.session_state:
     st.session_state.upload_file = False
